@@ -1,0 +1,16 @@
+{
+  "name": "future-tech-website",
+  "version": "1.0.0",
+  "description": "Футуристический корпоративный сайт технологической компании",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "dependencies": {
+    "gsap": "^3.12.4",
+    "three": "^0.161.0"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+} 

@@ -1,0 +1,314 @@
+/*
+ * TechFuture - Анимации
+ * Футуристические анимации для темного дизайна
+ */
+
+/* === Keyframes === */
+
+/* Пульсация неоновых элементов */
+@keyframes neonPulse {
+    0% {
+        filter: drop-shadow(0 0 5px var(--color-neon-blue));
+    }
+    50% {
+        filter: drop-shadow(0 0 15px var(--color-neon-blue)) drop-shadow(0 0 25px var(--color-neon-purple));
+    }
+    100% {
+        filter: drop-shadow(0 0 5px var(--color-neon-blue));
+    }
+}
+
+/* Движение сетки на фоне */
+@keyframes gridMove {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    100% {
+        transform: translateX(-20%) translateY(-20%);
+    }
+}
+
+/* Текстовый глюч-эффект */
+@keyframes glitch {
+    0% {
+        text-shadow: 0 0 5px var(--color-neon-blue), 0 0 10px var(--color-neon-blue);
+    }
+    10% {
+        text-shadow: 0 0 10px var(--color-neon-blue), 0 0 20px var(--color-neon-blue);
+        transform: translateX(-2px);
+    }
+    20% {
+        text-shadow: 0 0 5px var(--color-neon-purple), 0 0 10px var(--color-neon-purple);
+        transform: translateX(2px);
+    }
+    30% {
+        text-shadow: 0 0 5px var(--color-neon-mint), 0 0 10px var(--color-neon-mint);
+        transform: translateY(2px);
+    }
+    40% {
+        text-shadow: 0 0 10px var(--color-neon-blue), 0 0 20px var(--color-neon-blue);
+        transform: translateY(-2px);
+    }
+    50% {
+        text-shadow: 0 0 5px var(--color-neon-purple), 0 0 15px var(--color-neon-purple);
+        transform: translateX(-1px) translateY(1px);
+    }
+    60% {
+        text-shadow: 0 0 5px var(--color-neon-mint), 0 0 10px var(--color-neon-mint);
+        transform: translateX(1px) translateY(-1px);
+    }
+    70% {
+        text-shadow: 0 0 10px var(--color-neon-blue), 0 0 20px var(--color-neon-blue);
+        transform: translateX(0px) translateY(0px);
+    }
+    80% {
+        text-shadow: 0 0 5px var(--color-neon-purple), 0 0 10px var(--color-neon-purple);
+        transform: translateX(3px);
+    }
+    90% {
+        text-shadow: 0 0 5px var(--color-neon-mint), 0 0 15px var(--color-neon-mint);
+        transform: translateX(-3px);
+    }
+    100% {
+        text-shadow: 0 0 5px var(--color-neon-blue), 0 0 10px var(--color-neon-blue);
+        transform: translateX(0) translateY(0);
+    }
+}
+
+/* Компоненты глюч-эффекта */
+@keyframes glitch-effect-1 {
+    0% {
+        transform: translateX(0);
+    }
+    20% {
+        transform: translateX(3px);
+    }
+    40% {
+        transform: translateX(-3px);
+    }
+    60% {
+        transform: translateX(3px);
+    }
+    80% {
+        transform: translateX(-3px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes glitch-effect-2 {
+    0% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(2px);
+    }
+    40% {
+        transform: translateY(-2px);
+    }
+    60% {
+        transform: translateY(2px);
+    }
+    80% {
+        transform: translateY(-2px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Движение частиц */
+@keyframes particlesMove {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Вращение */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Мягкое появление элементов */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Подсветка границ */
+@keyframes borderLight {
+    0% {
+        border-color: rgba(0, 178, 255, 0.1);
+        box-shadow: 0 0 5px rgba(0, 178, 255, 0.1);
+    }
+    50% {
+        border-color: rgba(0, 178, 255, 0.5);
+        box-shadow: 0 0 15px rgba(0, 178, 255, 0.3);
+    }
+    100% {
+        border-color: rgba(0, 178, 255, 0.1);
+        box-shadow: 0 0 5px rgba(0, 178, 255, 0.1);
+    }
+}
+
+/* Анимация загрузки */
+@keyframes loading {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* === ScrollTrigger анимации === */
+
+/* Fade In при скролле */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Slide In Left при скролле */
+.slide-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.slide-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Slide In Right при скролле */
+.slide-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.slide-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Scale Up при скролле */
+.scale-up {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scale-up.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* === Применение анимаций к элементам === */
+
+/* Пульсирующие неоновые элементы */
+.neon-pulse {
+    animation: neonPulse 3s infinite;
+}
+
+/* Вращающиеся элементы */
+.rotate-slow {
+    animation: rotate 30s linear infinite;
+}
+
+.rotate-medium {
+    animation: rotate 15s linear infinite;
+}
+
+.rotate-fast {
+    animation: rotate 8s linear infinite;
+}
+
+/* Подсветка границ для карточек */
+.card-highlight:hover {
+    animation: borderLight 2s infinite;
+}
+
+/* Анимация для лоадера */
+.loading-bar::after {
+    content: '';
+    display: block;
+    height: 3px;
+    background: var(--gradient-primary);
+    animation: loading 2s ease-in-out;
+}
+
+/* Анимация для меню при скролле */
+header.scrolled {
+    height: 70px;
+    background: rgba(5, 5, 16, 0.95);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Анимация для гамбургер-меню */
+.menu-toggle.active .hamburger {
+    background: transparent;
+}
+
+.menu-toggle.active .hamburger::before {
+    transform: rotate(45deg);
+}
+
+.menu-toggle.active .hamburger::after {
+    transform: rotate(-45deg);
+}
+
+/* Стилизация скроллбара */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-darker);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--color-neon-blue), var(--color-neon-purple));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(var(--color-neon-mint), var(--color-neon-blue));
+}
+
+/* Delay для каскадных анимаций */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+.delay-600 { transition-delay: 0.6s; }
+.delay-700 { transition-delay: 0.7s; }
+.delay-800 { transition-delay: 0.8s; }
+.delay-900 { transition-delay: 0.9s; }
+.delay-1000 { transition-delay: 1s; } 
