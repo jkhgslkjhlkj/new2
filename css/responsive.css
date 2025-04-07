@@ -258,4 +258,201 @@
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
+}
+
+/* === Адаптивные стили для Overwatch 2 === */
+
+/* Большие экраны */
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .hero-content h1 {
+        font-size: 4.5rem;
+    }
+    
+    .hero-card img {
+        height: 300px;
+    }
+}
+
+/* Средние экраны - ноутбуки */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    
+    .heroes-grid, .maps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .event-slide {
+        flex-direction: column;
+    }
+    
+    .event-image {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .event-info {
+        width: 100%;
+    }
+}
+
+/* Планшеты */
+@media (max-width: 992px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    .hero-section {
+        flex-direction: column;
+    }
+    
+    .hero-content {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .hero-3d {
+        width: 100%;
+        height: 300px;
+    }
+    
+    .navbar .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--background-color);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar .nav-links.active {
+        display: flex;
+    }
+    
+    .navbar .nav-link {
+        margin: 10px 0;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+    }
+    
+    .footer-logo {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+    .container {
+        max-width: 540px;
+        padding: 0 15px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .heroes-grid, .maps-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-filters {
+        flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+        margin: 5px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+    }
+    
+    .footer-legal {
+        margin-top: 15px;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .hero-buttons .btn {
+        margin: 10px 0;
+    }
+    
+    .hero-3d {
+        height: 200px;
+    }
+    
+    .footer-links-column {
+        width: 100%;
+    }
+}
+
+/* Темная тема (опционально) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #121624;
+        --background-color-light: #1d2235;
+    }
+}
+
+/* Настройки для ориентации экрана */
+@media (orientation: landscape) and (max-height: 500px) {
+    .hero-section {
+        height: auto;
+        min-height: 100vh;
+        padding: 100px 0;
+    }
+    
+    .nav-buttons .btn {
+        padding: 8px 12px;
+    }
 } 

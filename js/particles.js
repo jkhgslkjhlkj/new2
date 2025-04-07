@@ -1,161 +1,161 @@
 /**
- * TechFuture - Анимированные частицы
- * Создает интерактивные частицы в фоне сайта
+ * Particles JS для Overwatch 2
+ * Создает эффект частиц в фоне, имитирующий энергетические частицы вселенной Overwatch
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-    const particlesContainer = document.getElementById('particles-background');
+document.addEventListener('DOMContentLoaded', function() {
+    const particlesContainer = document.getElementById('particles-container');
     
     if (!particlesContainer) return;
-
-    // Настройки
-    const settings = {
-        particlesCount: window.innerWidth < 768 ? 50 : 100,
-        particleColor: ['rgba(0, 178, 255, 0.7)', 'rgba(138, 43, 226, 0.7)', 'rgba(0, 255, 213, 0.7)'],
-        minSize: 1,
-        maxSize: 3,
-        minSpeed: 0.3,
-        maxSpeed: 0.8,
-        connectDistance: 150,
-        connectWidth: 0.5,
-        responsiveWidth: 0.0005 // ширина соединений в зависимости от расстояния
-    };
-
-    let width = window.innerWidth;
-    let height = window.innerHeight;
     
-    // Создаем canvas
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    
-    canvas.width = width;
-    canvas.height = height;
-    
-    particlesContainer.appendChild(canvas);
-    
-    // Массив частиц
-    let particles = [];
-    
-    // Класс частицы
-    class Particle {
-        constructor() {
-            this.x = Math.random() * width;
-            this.y = Math.random() * height;
-            this.size = Math.random() * (settings.maxSize - settings.minSize) + settings.minSize;
-            this.speedX = (Math.random() - 0.5) * (settings.maxSpeed - settings.minSpeed) * 2;
-            this.speedY = (Math.random() - 0.5) * (settings.maxSpeed - settings.minSpeed) * 2;
-            this.color = settings.particleColor[Math.floor(Math.random() * settings.particleColor.length)];
-            this.opacity = Math.random() * 0.8 + 0.2;
-        }
-        
-        update() {
-            // Движение
-            this.x += this.speedX;
-            this.y += this.speedY;
-            
-            // Границы
-            if (this.x > width || this.x < 0) {
-                this.speedX = -this.speedX;
-            }
-            
-            if (this.y > height || this.y < 0) {
-                this.speedY = -this.speedY;
-            }
-        }
-        
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = this.color.replace(')', `, ${this.opacity})`);
-            ctx.fill();
-        }
-    }
+    // Настройки частиц
+    const PARTICLE_COUNT = 80;
+    const PARTICLE_SIZE_MIN = 1;
+    const PARTICLE_SIZE_MAX = 4;
+    const PARTICLE_SPEED_MIN = 0.2;
+    const PARTICLE_SPEED_MAX = 0.8;
+    const PARTICLE_COLORS = ['#fa9c1e', '#218ffe', '#ffffff', '#ff5252'];
     
     // Создаем частицы
+    let particles = [];
+    
     function createParticles() {
-        for (let i = 0; i < settings.particlesCount; i++) {
-            particles.push(new Particle());
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            const particle = document.createElement('div');
+            const size = Math.random() * (PARTICLE_SIZE_MAX - PARTICLE_SIZE_MIN) + PARTICLE_SIZE_MIN;
+            
+            particle.className = 'particle';
+            particle.style.position = 'absolute';
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.borderRadius = '50%';
+            particle.style.backgroundColor = PARTICLE_COLORS[Math.floor(Math.random() * PARTICLE_COLORS.length)];
+            particle.style.opacity = Math.random() * 0.6 + 0.2;
+            particle.style.boxShadow = `0 0 ${size * 2}px ${particle.style.backgroundColor}`;
+            
+            // Случайное начальное положение
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            
+            // Случайная скорость и направление
+            const speedX = (Math.random() - 0.5) * (PARTICLE_SPEED_MAX - PARTICLE_SPEED_MIN) + PARTICLE_SPEED_MIN;
+            const speedY = (Math.random() - 0.5) * (PARTICLE_SPEED_MAX - PARTICLE_SPEED_MIN) + PARTICLE_SPEED_MIN;
+            
+            particles.push({
+                element: particle,
+                x: x,
+                y: y,
+                speedX: speedX,
+                speedY: speedY,
+                size: size
+            });
+            
+            particlesContainer.appendChild(particle);
         }
     }
     
-    // Соединяем близкие частицы линиями
+    function updateParticles() {
+        particles.forEach(particle => {
+            // Обновляем положение
+            particle.x += particle.speedX;
+            particle.y += particle.speedY;
+            
+            // Проверяем границы экрана
+            if (particle.x < -particle.size) particle.x = window.innerWidth + particle.size;
+            if (particle.x > window.innerWidth + particle.size) particle.x = -particle.size;
+            if (particle.y < -particle.size) particle.y = window.innerHeight + particle.size;
+            if (particle.y > window.innerHeight + particle.size) particle.y = -particle.size;
+            
+            // Применяем новое положение
+            particle.element.style.transform = `translate(${particle.x}px, ${particle.y}px)`;
+        });
+        
+        requestAnimationFrame(updateParticles);
+    }
+    
     function connectParticles() {
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < settings.connectDistance) {
-                    // Прозрачность зависит от расстояния
-                    const opacity = 1 - (distance / settings.connectDistance);
-                    const width = settings.connectWidth + (distance * settings.responsiveWidth);
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        canvas.style.position = 'absolute';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.pointerEvents = 'none';
+        
+        particlesContainer.appendChild(canvas);
+        
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Рисуем соединения между близкими частицами
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
                     
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(0, 178, 255, ${opacity * 0.5})`;
-                    ctx.lineWidth = width;
-                    ctx.stroke();
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(250, 156, 30, ${0.1 * (1 - distance / 150)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
                 }
             }
-        }
-    }
-    
-    // Основная анимация
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // Обновляем и рисуем каждую частицу
-        for (let i = 0; i < particles.length; i++) {
-            particles[i].update();
-            particles[i].draw();
-        }
-        
-        connectParticles();
-        requestAnimationFrame(animate);
-    }
-    
-    // Обработчик изменения размера окна
-    function handleResize() {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        
-        canvas.width = width;
-        canvas.height = height;
-        
-        // Пересоздаем частицы
-        particles = [];
-        settings.particlesCount = window.innerWidth < 768 ? 50 : 100;
-        createParticles();
-    }
-    
-    // Интерактивность при движении мыши
-    function handleMouseMove(e) {
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-        
-        // Влияем на некоторые частицы при наведении
-        for (let i = 0; i < particles.length; i++) {
-            const dx = mouseX - particles[i].x;
-            const dy = mouseY - particles[i].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
             
-            if (distance < 100) {
-                const force = 0.1; // сила отталкивания/притяжения
-                const angle = Math.atan2(dy, dx);
-                
-                particles[i].x -= Math.cos(angle) * force;
-                particles[i].y -= Math.sin(angle) * force;
+            requestAnimationFrame(draw);
+        }
+        
+        draw();
+    }
+    
+    function handleResize() {
+        particles.forEach(particle => {
+            if (particle.x > window.innerWidth) {
+                particle.x = Math.random() * window.innerWidth;
             }
+            if (particle.y > window.innerHeight) {
+                particle.y = Math.random() * window.innerHeight;
+            }
+        });
+        
+        // Обновляем размер canvas
+        const canvas = particlesContainer.querySelector('canvas');
+        if (canvas) {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
     }
     
-    // Обработчики событий
     window.addEventListener('resize', handleResize);
-    document.addEventListener('mousemove', handleMouseMove);
     
     // Инициализация
     createParticles();
-    animate();
+    updateParticles();
+    connectParticles();
+    
+    // Добавляем эффект параллакса при движении мыши
+    document.addEventListener('mousemove', function(e) {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        
+        particles.forEach(particle => {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            
+            const deltaX = (mouseX - centerX) / centerX;
+            const deltaY = (mouseY - centerY) / centerY;
+            
+            // Вычисляем новую позицию с эффектом параллакса
+            const parallaxX = deltaX * 3 * Math.random();
+            const parallaxY = deltaY * 3 * Math.random();
+            
+            // Плавно двигаем частицы
+            particle.element.style.transform = `translate(${particle.x + parallaxX}px, ${particle.y + parallaxY}px)`;
+        });
+    });
 }); 

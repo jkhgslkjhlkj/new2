@@ -1,249 +1,255 @@
 /**
- * TechFuture - Основной JavaScript файл
- * Отвечает за загрузку и инициализацию всех компонентов сайта
+ * Overwatch 2 - Основной JavaScript файл
+ * Содержит функционал для управления интерфейсом сайта
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Управление загрузкой страницы
-    const pageLoader = () => {
-        const body = document.body;
-        
-        // Создаем и добавляем прелоадер, если его еще нет
-        if (!document.querySelector('.page-loader')) {
-            const loader = document.createElement('div');
-            loader.classList.add('page-loader');
-            
-            const spinner = document.createElement('div');
-            spinner.classList.add('loader-spinner');
-            spinner.innerHTML = `
-                <svg viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="40" stroke="rgba(0, 178, 255, 0.2)" stroke-width="8" fill="none" />
-                    <circle cx="50" cy="50" r="40" stroke="rgba(0, 178, 255, 1)" stroke-width="8" fill="none" class="loader-circle" />
-                </svg>
-            `;
-            
-            loader.appendChild(spinner);
-            body.prepend(loader);
-            
-            // Блокируем скролл во время загрузки
-            body.style.overflow = 'hidden';
-        }
-        
-        // Скрываем прелоадер когда контент загружен
-        window.addEventListener('load', () => {
-            const loader = document.querySelector('.page-loader');
-            
-            if (loader) {
-                // Плавно скрываем прелоадер
-                setTimeout(() => {
-                    loader.style.opacity = '0';
-                    
-                    // Разрешаем скролл
-                    body.style.overflow = '';
-                    
-                    // Удаляем прелоадер из DOM после анимации
-                    setTimeout(() => {
-                        loader.remove();
-                    }, 500);
-                }, 500);
+document.addEventListener('DOMContentLoaded', function() {
+    // Загрузочная анимация
+    const loadingBar = document.createElement('div');
+    loadingBar.className = 'loading-bar';
+    document.body.appendChild(loadingBar);
+    
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            loadingBar.style.opacity = '0';
+            setTimeout(() => {
+                loadingBar.remove();
+            }, 300);
+        }, 2000);
+    });
+    
+    // Управление навигационным меню
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    }
+    
+    // Добавляем класс к навбару при скролле
+    const navbar = document.querySelector('.navbar');
+    
+    if (navbar) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
             }
         });
-    };
+    }
     
-    // Настройка атрибута data-text для эффекта глюча
-    const initGlitchText = () => {
-        const glitchElements = document.querySelectorAll('.glitch-text');
-        
-        glitchElements.forEach(element => {
-            const text = element.textContent;
-            element.setAttribute('data-text', text);
-        });
-    };
-    
-    // Инициализация темного режима
-    const initDarkMode = () => {
-        // Проверяем предпочтения пользователя
-        const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        // Проверяем сохраненные настройки
-        const savedMode = localStorage.getItem('darkMode');
-        
-        // Применяем тему
-        if (savedMode === 'dark' || (savedMode === null && prefersDarkMode)) {
-            document.body.classList.add('dark-mode');
-        }
-        
-        // Обработчик для кнопки переключения темы (если есть)
-        const themeToggle = document.querySelector('.theme-toggle');
-        
-        if (themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                
-                // Сохраняем предпочтение пользователя
-                const isDarkMode = document.body.classList.contains('dark-mode');
-                localStorage.setItem('darkMode', isDarkMode ? 'dark' : 'light');
-            });
-        }
-    };
-    
-    // Плавный скролл при клике на внутренние ссылки
-    const initSmoothScroll = () => {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                
-                // Если ссылка на якорь, а не просто #
-                if (targetId !== '#') {
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        // Закрываем мобильное меню если оно открыто
-                        const mainMenu = document.querySelector('.main-menu');
-                        const menuToggle = document.querySelector('.menu-toggle');
-                        
-                        if (mainMenu && mainMenu.classList.contains('active')) {
-                            mainMenu.classList.remove('active');
-                            if (menuToggle) menuToggle.classList.remove('active');
-                        }
-                        
-                        // Плавный скролл к элементу
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        });
-    };
-    
-    // Управление ленивой загрузкой изображений
-    const initLazyLoading = () => {
-        if ('loading' in HTMLImageElement.prototype) {
-            // Используем нативную ленивую загрузку
-            const images = document.querySelectorAll('img[loading="lazy"]');
-            images.forEach(img => {
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                }
-            });
-        } else {
-            // Полифилл для старых браузеров
-            const lazyImages = document.querySelectorAll('img[data-src]');
+    // Плавная прокрутка для якорных ссылок
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
             
-            if (lazyImages.length === 0) return;
+            const target = document.querySelector(this.getAttribute('href'));
+            if (!target) return;
             
-            const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.removeAttribute('data-src');
-                        observer.unobserve(img);
+            window.scrollTo({
+                top: target.offsetTop - 80,
+                behavior: 'smooth'
+            });
+            
+            // Закрываем мобильное меню если оно открыто
+            if (menuToggle && menuToggle.classList.contains('active')) {
+                menuToggle.click();
+            }
+        });
+    });
+    
+    // Анимация появления элементов при скролле
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    function checkFadeElements() {
+        const triggerBottom = window.innerHeight * 0.8;
+        
+        fadeElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            
+            if (elementTop < triggerBottom) {
+                element.classList.add('visible');
+            }
+        });
+    }
+    
+    if (fadeElements.length > 0) {
+        window.addEventListener('scroll', checkFadeElements);
+        checkFadeElements(); // Проверяем при загрузке
+    }
+    
+    // Фильтрация героев
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const heroCards = document.querySelectorAll('.hero-card');
+    
+    if (filterButtons.length > 0 && heroCards.length > 0) {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Убираем активный класс со всех кнопок
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Добавляем активный класс на текущую кнопку
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                
+                // Показываем/скрываем карточки героев в зависимости от фильтра
+                heroCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
                     }
                 });
             });
-            
-            lazyImages.forEach(image => {
-                lazyLoadObserver.observe(image);
-            });
-        }
-    };
+        });
+    }
     
-    // Обработка отправки форм AJAX
-    const initFormSubmission = () => {
-        const forms = document.querySelectorAll('form');
-        
-        forms.forEach(form => {
-            form.addEventListener('submit', function(e) {
-                // В демо-версии просто предотвращаем отправку формы
-                // В реальном проекте здесь должен быть AJAX запрос на сервер
-                e.preventDefault();
+    // Слайдер для событий
+    const eventDots = document.querySelectorAll('.dot');
+    const eventSlides = document.querySelectorAll('.event-slide');
+    
+    if (eventDots.length > 0 && eventSlides.length > 0) {
+        eventDots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                // Убираем активный класс со всех точек
+                eventDots.forEach(d => d.classList.remove('active'));
                 
-                const submitButton = form.querySelector('button[type="submit"]');
+                // Добавляем активный класс на текущую точку
+                this.classList.add('active');
                 
-                if (submitButton) {
-                    // Меняем текст кнопки
-                    const originalText = submitButton.textContent;
-                    submitButton.textContent = 'Отправляется...';
-                    submitButton.disabled = true;
-                    
-                    // Имитация отправки
+                // Скрываем все слайды
+                eventSlides.forEach(slide => {
+                    slide.style.opacity = '0';
                     setTimeout(() => {
-                        form.reset();
-                        submitButton.textContent = 'Отправлено!';
-                        
-                        // Возвращаем исходный текст
-                        setTimeout(() => {
-                            submitButton.textContent = originalText;
-                            submitButton.disabled = false;
-                        }, 2000);
-                    }, 1500);
+                        slide.style.display = 'none';
+                    }, 300);
+                });
+                
+                // Показываем выбранный слайд
+                if (eventSlides[index]) {
+                    eventSlides[index].style.display = 'flex';
+                    setTimeout(() => {
+                        eventSlides[index].style.opacity = '1';
+                    }, 50);
                 }
             });
         });
-    };
+    }
     
-    // Обнаружение и активация анимаций при скролле
-    const initScrollTriggers = () => {
-        const animatedElements = document.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-up');
-        
-        if (animatedElements.length === 0) return;
-        
-        const checkScroll = () => {
-            animatedElements.forEach(element => {
-                const rect = element.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-                
-                // Проверяем, виден ли элемент в области просмотра
-                if (rect.top <= windowHeight * 0.85 && rect.bottom >= 0) {
-                    element.classList.add('active');
-                }
-            });
-        };
-        
-        // Проверяем при загрузке страницы и при скролле
-        window.addEventListener('scroll', checkScroll);
-        window.addEventListener('resize', checkScroll);
-        checkScroll();
-    };
+    // Валидация формы контактов
+    const contactForm = document.getElementById('contact-form');
     
-    // Управление активными пунктами меню при скролле
-    const initActiveMenuOnScroll = () => {
-        const sections = document.querySelectorAll('section[id]');
-        
-        if (sections.length === 0) return;
-        
-        window.addEventListener('scroll', () => {
-            let scrollPosition = window.scrollY + 100;
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                const sectionId = section.getAttribute('id');
+            // Получаем значения полей
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            // Проверяем валидность
+            let isValid = true;
+            
+            if (name === '') {
+                showError('name', 'Пожалуйста, введите ваше имя');
+                isValid = false;
+            } else {
+                clearError('name');
+            }
+            
+            if (email === '') {
+                showError('email', 'Пожалуйста, введите ваш email');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                showError('email', 'Пожалуйста, введите корректный email');
+                isValid = false;
+            } else {
+                clearError('email');
+            }
+            
+            if (message === '') {
+                showError('message', 'Пожалуйста, введите ваше сообщение');
+                isValid = false;
+            } else {
+                clearError('message');
+            }
+            
+            if (isValid) {
+                // Имитация отправки формы
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
                 
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    document.querySelectorAll('.main-menu a').forEach(link => {
-                        link.parentElement.classList.remove('active');
-                        
-                        if (link.getAttribute('href') === `#${sectionId}`) {
-                            link.parentElement.classList.add('active');
-                        }
-                    });
-                }
-            });
+                submitButton.disabled = true;
+                submitButton.textContent = 'Отправка...';
+                
+                setTimeout(() => {
+                    showSuccess('Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.');
+                    contactForm.reset();
+                    
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalText;
+                }, 1500);
+            }
         });
-    };
+    }
     
-    // Запуск всех инициализаций
-    pageLoader();
-    initGlitchText();
-    initDarkMode();
-    initSmoothScroll();
-    initLazyLoading();
-    initFormSubmission();
-    initScrollTriggers();
-    initActiveMenuOnScroll();
+    // Вспомогательные функции для валидации формы
+    function showError(fieldId, message) {
+        const field = document.getElementById(fieldId);
+        const errorElement = field.parentElement.querySelector('.error-message') || document.createElement('div');
+        
+        errorElement.className = 'error-message';
+        errorElement.textContent = message;
+        
+        if (!field.parentElement.querySelector('.error-message')) {
+            field.parentElement.appendChild(errorElement);
+        }
+        
+        field.classList.add('error');
+    }
+    
+    function clearError(fieldId) {
+        const field = document.getElementById(fieldId);
+        const errorElement = field.parentElement.querySelector('.error-message');
+        
+        if (errorElement) {
+            errorElement.remove();
+        }
+        
+        field.classList.remove('error');
+    }
+    
+    function showSuccess(message) {
+        const successMessage = document.createElement('div');
+        successMessage.className = 'success-message';
+        successMessage.textContent = message;
+        
+        contactForm.appendChild(successMessage);
+        
+        setTimeout(() => {
+            successMessage.style.opacity = '0';
+            setTimeout(() => {
+                successMessage.remove();
+            }, 300);
+        }, 3000);
+    }
+    
+    function isValidEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email.toLowerCase());
+    }
 }); 

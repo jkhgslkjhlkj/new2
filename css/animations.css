@@ -311,4 +311,276 @@ header.scrolled {
 .delay-700 { transition-delay: 0.7s; }
 .delay-800 { transition-delay: 0.8s; }
 .delay-900 { transition-delay: 0.9s; }
-.delay-1000 { transition-delay: 1s; } 
+.delay-1000 { transition-delay: 1s; }
+
+/* === Анимации для Overwatch 2 === */
+
+/* Эффект свечения для кнопок */
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px rgba(250, 156, 30, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(250, 156, 30, 0.8), 0 0 30px rgba(250, 156, 30, 0.4);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(250, 156, 30, 0.5);
+    }
+}
+
+/* Анимация логотипа */
+@keyframes logoRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Анимация появления героев */
+@keyframes heroReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Анимация для карточек героев при наведении */
+.hero-card:hover img {
+    transform: scale(1.05);
+    transition: transform 0.5s ease;
+}
+
+.hero-card img {
+    transition: transform 0.5s ease;
+}
+
+/* Анимация для показа способностей героев */
+.hero-ability {
+    transition: all 0.3s ease;
+}
+
+.hero-ability:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(33, 143, 254, 0.5);
+}
+
+/* Анимация для кнопок */
+.btn {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease;
+    z-index: -1;
+}
+
+.btn:hover:after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Плавное появление элементов при скролле */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Анимация пульсации для акцентных элементов */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* Анимация для загрузки контента */
+@keyframes loadingBar {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.loading-bar {
+    height: 4px;
+    background-color: var(--primary-color);
+    width: 0%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    animation: loadingBar 2s ease-out forwards;
+}
+
+/* Анимация для частиц фона */
+.particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Анимация для навигации */
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover:after {
+    transform: scaleX(1);
+}
+
+/* Анимация для карт */
+.map-card {
+    overflow: hidden;
+    position: relative;
+}
+
+.map-card img {
+    transition: transform 0.5s ease;
+}
+
+.map-card:hover img {
+    transform: scale(1.1);
+}
+
+.map-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(28, 35, 64, 0.9), transparent);
+    transform: translateY(20px);
+    opacity: 0.8;
+    transition: all 0.4s ease;
+}
+
+.map-card:hover .map-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Анимация обновлений на временной шкале */
+.update-item {
+    position: relative;
+    transition: transform 0.4s ease;
+}
+
+.update-item:hover {
+    transform: translateX(10px);
+}
+
+.update-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -20px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.update-item:hover::before {
+    transform: scale(1.5);
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+/* Анимация для точек навигации слайдера */
+.dot {
+    transition: all 0.3s ease;
+}
+
+.dot:hover {
+    transform: scale(1.2);
+}
+
+/* Анимация для иконок социальных сетей */
+.social-icon {
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px) rotate(5deg);
+    color: var(--primary-color);
+}
+
+/* Анимация для меню */
+.menu-toggle {
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:hover span {
+    background-color: var(--primary-color);
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+} 
