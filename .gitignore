@@ -1,18 +1,63 @@
-# IDE
+# Игнорируем системные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Игнорируем файлы редакторов и IDE
 .idea/
 .vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+*.swp
+*.swo
 
-# Python
-.venv/
-__pycache__/
-*.pyc
+# Игнорируем логи и временные файлы
+*.log
+*.tmp
+*.temp
+logs/
+tmp/
+temp/
 
-# Node
+# Игнорируем папки с зависимостями
 node_modules/
-npm-debug.log
-yarn-debug.log
-yarn-error.log
+.npm/
+.yarn/
+.pnp/
+.pnp.js
 
-# System
-.DS_Store
-Thumbs.db 
+# Игнорируем файлы сборки
+dist/
+build/
+out/
+public/assets/
+
+# Игнорируем файлы конфигурации
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Игнорируем кэш
+.cache/
+.sass-cache/
+.parcel-cache/
+
+# Игнорируем файлы покрытия кода
+coverage/
+
+# Игнорируем виртуальные окружения Python
+.venv/
+venv/
+ENV/
+env/
+
+# Игнорируем файлы компилированного Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python 
