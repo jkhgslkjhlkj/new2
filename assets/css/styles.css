@@ -155,7 +155,9 @@ header .container {
 
 .logo img {
     height: 40px;
+    width: auto;
     margin-right: 1rem;
+    display: block;
 }
 
 .logo h1 {
