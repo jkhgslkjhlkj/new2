@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <style>
+        .header-nav {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        .header-nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .header-nav ul li {
+            margin: 0 15px;
+        }
+        .twitter-icon {
+            width: 24px;
+            height: 24px;
+        }
+        .defi-node {
+            margin: 15px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -17,20 +41,18 @@
                 <img src="assets/images/logo.svg" alt="Logo">
                 <h1>Crypto AI</h1>
             </div>
-            <nav>
+            <nav class="header-nav">
                 <ul>
-                    <li><a href="#home">Главная</a></li>
-                    <li><a href="#trading">AI Трейдинг</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#trading">AI Trading</a></li>
                     <li><a href="#defi">DeFi</a></li>
-                    <li><a href="#analytics">Аналитика</a></li>
-                    <li><a href="#contracts">Смарт-контракты</a></li>
-                    <li><a href="#security">Безопасность</a></li>
-                    <li><a href="#community">Сообщество</a></li>
+                    <li><a href="#analytics">Analytics</a></li>
+                    <li><a href="#contracts">Smart Contracts</a></li>
+                    <li><a href="#security">Security</a></li>
                 </ul>
             </nav>
             <div class="cta-buttons">
-                <a href="#" class="btn-primary">Запустить приложение</a>
-                <a href="#" class="btn-secondary"><i class="fab fa-twitter"></i></a>
+                <a href="https://twitter.com" class="btn-secondary"><img src="free-icon-twitter-59690202.png" alt="Twitter" class="twitter-icon"></a>
             </div>
         </div>
     </header>
@@ -39,14 +61,13 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Crypto AI</h1>
-                <h2>Будущее AI-трейдинга на Binance Smart Chain</h2>
+                <h2>The Future of AI Trading on Binance Smart Chain</h2>
                 <div class="hero-buttons">
-                    <a href="#" class="btn-primary">Запустить приложение</a>
-                    <a href="#" class="btn-secondary">Сообщество</a>
+                    <a href="https://twitter.com" class="btn-secondary"><img src="free-icon-twitter-59690202.png" alt="Twitter" class="twitter-icon"> Twitter</a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="assets/images/hero-image.svg" alt="AI Trading" class="floating">
+                <img src="rabit ee_3.gif" alt="AI Trading" class="floating">
             </div>
         </div>
     </section>
@@ -54,16 +75,16 @@
     <section id="features" class="features">
         <div class="container">
             <div class="section-header">
-                <h2>Возможности Crypto AI</h2>
+                <h2>Crypto AI Features</h2>
             </div>
             <div class="feature-icons">
                 <div class="feature-icon">
                     <i class="fas fa-chart-line"></i>
-                    <span>Анализ данных</span>
+                    <span>Data Analysis</span>
                 </div>
                 <div class="feature-icon">
                     <i class="fas fa-brain"></i>
-                    <span>AI Аналитика</span>
+                    <span>AI Analytics</span>
                 </div>
             </div>
         </div>
@@ -74,15 +95,15 @@
             <div class="content-wrapper">
                 <div class="text-content">
                     <h2>AI-Powered Trading Algorithms</h2>
-                    <p>Используйте передовой искусственный интеллект для выполнения сделок с точностью и эффективностью на Binance Smart Chain.</p>
+                    <p>Leverage cutting-edge artificial intelligence to execute trades with precision and efficiency on the Binance Smart Chain.</p>
                     <blockquote>
-                        "Наша проприетарная нейронная сеть анализирует миллионы точек данных в секунду для определения оптимальных позиций входа и выхода. Наши алгоритмы обучены на более чем 5-летних рыночных данных BSC, достигая 76% точности прогнозирования в волатильных рыночных условиях."
+                        "Our proprietary neural networks analyze millions of data points per second to identify optimal entry and exit positions. Our algorithms have been trained on over 5 years of BSC market data, achieving 76% prediction accuracy in volatile market conditions."
                     </blockquote>
                     <ul>
-                        <li>Продвинутые модели машинного обучения на исторических данных</li>
-                        <li>Распознавание паттернов для выявления прибыльных торговых возможностей</li>
-                        <li>Адаптивные алгоритмы, которые эволюционируют с меняющимися рыночными условиями</li>
-                        <li>Анализ настроений социальных медиа и новостных источников</li>
+                        <li>Advanced machine learning models trained on historical market data</li>
+                        <li>Pattern recognition for identifying profitable trading opportunities</li>
+                        <li>Adaptive algorithms that evolve with changing market conditions</li>
+                        <li>Sentiment analysis of social media and news sources</li>
                     </ul>
                 </div>
                 <div class="image-content">
@@ -106,23 +127,23 @@
                     <!-- Animated visualization of DeFi protocols -->
                     <div class="defi-visualization">
                         <div class="defi-node central">Crypto AI</div>
-                        <div class="defi-node">PancakeSwap</div>
-                        <div class="defi-node">Venus</div>
-                        <div class="defi-node">BakerySwap</div>
+                        <div class="defi-node" style="top: 30px; right: 120px;">PancakeSwap</div>
+                        <div class="defi-node" style="bottom: 30px; left: 70px;">Venus</div>
+                        <div class="defi-node" style="bottom: 80px; right: 100px;">BakerySwap</div>
                         <div class="defi-connection"></div>
                     </div>
                 </div>
                 <div class="text-content">
                     <h2>Seamless DeFi Integration</h2>
-                    <p>Подключитесь к процветающей экосистеме DeFi на BSC, чтобы максимизировать доходность и торговые возможности на нескольких протоколах.</p>
+                    <p>Connect with BSC's thriving DeFi ecosystem to maximize yield and trading opportunities across multiple protocols.</p>
                     <blockquote>
-                        "Crypto AI интегрируется с более чем 25 DeFi протоколами на Binance Smart Chain, позволяя вам размещать капитал на нескольких платформах из единой панели управления."
+                        "Crypto AI seamlessly integrates with over 25 DeFi protocols on Binance Smart Chain, allowing you to deploy capital across multiple platforms from a single dashboard."
                     </blockquote>
                     <ul>
-                        <li>Доступ в один клик к основным DEX, таким как PancakeSwap и BakerySwap</li>
-                        <li>Автоматизированные стратегии фарминга на кредитных платформах</li>
-                        <li>Оптимизация предоставления ликвидности для максимальной отдачи</li>
-                        <li>Обнаружение и выполнение межпротокольного арбитража</li>
+                        <li>One-click access to major DEXs like PancakeSwap and BakerySwap</li>
+                        <li>Automated yield farming strategies across lending platforms</li>
+                        <li>Liquidity provision optimization for maximum returns</li>
+                        <li>Cross-protocol arbitrage detection and execution</li>
                     </ul>
                 </div>
             </div>
@@ -134,28 +155,19 @@
             <div class="content-wrapper">
                 <div class="text-content">
                     <h2>Real-Time Market Analytics</h2>
-                    <p>Получите доступ к комплексным рыночным данным и аналитике для принятия обоснованных торговых решений в сети Binance Smart Chain.</p>
+                    <p>Access comprehensive market data and analytics to make informed trading decisions on the Binance Smart Chain network.</p>
                     <blockquote>
-                        "Наш аналитический движок обрабатывает более 10,000 точек данных в секунду со всей экосистемы BSC, предоставляя вам рыночную информацию институционального уровня."
+                        "Our analytics engine processes over 10,000 data points per second from across the BSC ecosystem, providing you with institutional-grade market intelligence."
                     </blockquote>
                     <ul>
-                        <li>Обновления цен в реальном времени с точностью до миллисекунд</li>
-                        <li>Настраиваемые технические индикаторы и паттерны графиков</li>
-                        <li>Визуализация глубины рынка на нескольких биржах</li>
-                        <li>Инструменты анализа профиля объема и ликвидности</li>
+                        <li>Live price feeds with millisecond updates</li>
+                        <li>Customizable technical indicators and chart patterns</li>
+                        <li>Market depth visualization across multiple exchanges</li>
+                        <li>Volume profile and liquidity analysis tools</li>
                     </ul>
                 </div>
                 <div class="image-content">
-                    <div class="analytics-box">
-                        <div class="analytics-header">
-                            <h3>BSC MARKET DATA</h3>
-                            <div class="status live">LIVE</div>
-                        </div>
-                        <div class="chart-placeholder">
-                            <canvas id="marketChart"></canvas>
-                        </div>
-                        <div class="realtime-label">REAL-TIME DATA</div>
-                    </div>
+                    <img src="rabito1.png" alt="Analytics" class="analytics-image" style="max-width: 100%; border-radius: var(--border-radius);">
                 </div>
             </div>
         </div>
@@ -194,15 +206,15 @@ contract CryptoTrading {
                 </div>
                 <div class="text-content">
                     <h2>Custom Smart Contract Deployment</h2>
-                    <p>Создавайте и развертывайте персонализированные смарт-контракты на BSC для автоматизации ваших торговых стратегий и защиты активов.</p>
+                    <p>Create and deploy personalized smart contracts on BSC to automate your trading strategies and secure your assets.</p>
                     <blockquote>
-                        "Фабрика смарт-контрактов Crypto AI позволяет любому пользователю развертывать сложные торговые стратегии без написания ни одной строчки кода."
+                        "Crypto AI's smart contract factory allows anyone to deploy sophisticated trading strategies without writing a single line of code."
                     </blockquote>
                     <ul>
-                        <li>Конструктор контрактов drag-and-drop без необходимости программирования</li>
-                        <li>Предварительно проверенные шаблоны для распространенных торговых стратегий</li>
-                        <li>Условное выполнение на основе рыночных триггеров</li>
-                        <li>Автоматическая ребалансировка и управление портфелем</li>
+                        <li>Drag-and-drop contract builder with no coding required</li>
+                        <li>Pre-audited templates for common trading strategies</li>
+                        <li>Conditional execution based on market triggers</li>
+                        <li>Automated rebalancing and portfolio management</li>
                     </ul>
                 </div>
             </div>
@@ -214,15 +226,15 @@ contract CryptoTrading {
             <div class="content-wrapper">
                 <div class="text-content">
                     <h2>Enterprise-Grade Security</h2>
-                    <p>Защитите свои активы с помощью военного уровня шифрования и передовых протоколов безопасности, созданных специально для Binance Smart Chain.</p>
+                    <p>Protect your assets with military-grade encryption and advanced security protocols built specifically for the Binance Smart Chain.</p>
                     <blockquote>
-                        "Безопасность лежит в основе архитектуры Crypto AI. Наша платформа использует те же стандарты шифрования, что и крупные финансовые учреждения."
+                        "Security is at the core of Crypto AI's architecture. Our platform uses the same encryption standards as major financial institutions."
                     </blockquote>
                     <ul>
-                        <li>Интеграция мультиподписных кошельков для командного трейдинга</li>
-                        <li>Совместимость с аппаратными модулями безопасности (HSM)</li>
-                        <li>Мониторинг и предотвращение угроз в реальном времени</li>
-                        <li>Автоматизированные аудиты безопасности для всех транзакций</li>
+                        <li>Multi-signature wallet integration for team trading</li>
+                        <li>Hardware security module (HSM) compatibility</li>
+                        <li>Real-time threat monitoring and prevention</li>
+                        <li>Automated security audits for all transactions</li>
                     </ul>
                 </div>
                 <div class="image-content">
@@ -266,15 +278,15 @@ contract CryptoTrading {
                 </div>
                 <div class="text-content">
                     <h2>Lightning-Fast Trade Execution</h2>
-                    <p>Выполняйте сделки с беспрецедентной скоростью, используя лидирующую в отрасли пропускную способность и низкую задержку BSC.</p>
+                    <p>Execute trades at unprecedented speeds, leveraging BSC's industry-leading transaction throughput and low latency.</p>
                     <blockquote>
-                        "В трейдинге миллисекунды имеют значение. Исполнительный движок Crypto AI подключается напрямую к валидаторным узлам BSC, снижая задержку до 78% по сравнению со стандартными подключениями кошельков."
+                        "In trading, milliseconds matter. Crypto AI's execution engine connects directly to BSC validator nodes, reducing latency by up to 78% compared to standard wallet connections."
                     </blockquote>
                     <ul>
-                        <li>Выполнение и подтверждение сделок менее чем за секунду</li>
-                        <li>Прямые подключения к нодам для минимальной задержки</li>
-                        <li>Приоритезация транзакций для критических сделок</li>
-                        <li>Параллельная обработка заказов для сложных стратегий</li>
+                        <li>Sub-second trade execution and confirmation</li>
+                        <li>Direct node connections for minimal latency</li>
+                        <li>Transaction prioritization for critical trades</li>
+                        <li>Parallel order processing for complex strategies</li>
                     </ul>
                 </div>
             </div>
@@ -286,15 +298,15 @@ contract CryptoTrading {
             <div class="content-wrapper">
                 <div class="text-content">
                     <h2>Predictive Market Analysis</h2>
-                    <p>Предугадывайте движения рынка с помощью предиктивной аналитики на базе ИИ, адаптированной для уникальной динамики рынка BSC.</p>
+                    <p>Anticipate market movements with AI-powered predictive analytics tailored for BSC's unique market dynamics.</p>
                     <blockquote>
-                        "Наш предиктивный движок сочетает традиционный технический анализ с продвинутым машинным обучением для прогнозирования движения цен по сотням токенов BSC."
+                        "Our predictive engine combines traditional technical analysis with advanced machine learning to forecast price movements across hundreds of BSC tokens."
                     </blockquote>
                     <ul>
-                        <li>Модели прогнозирования цен на короткий и долгий срок</li>
-                        <li>Прогнозирование волатильности для управления рисками</li>
-                        <li>Корреляционный анализ между парами токенов</li>
-                        <li>Обнаружение аномалий для ранней идентификации трендов</li>
+                        <li>Short and long-term price prediction models</li>
+                        <li>Volatility forecasting for risk management</li>
+                        <li>Correlation analysis across token pairs</li>
+                        <li>Anomaly detection for early trend identification</li>
                     </ul>
                 </div>
                 <div class="image-content">
@@ -372,15 +384,15 @@ contract CryptoTrading {
                 </div>
                 <div class="text-content">
                     <h2>Intelligent Portfolio Management</h2>
-                    <p>Оптимизируйте свой портфель активов BSC с помощью стратегий распределения на базе ИИ и инструментов управления рисками.</p>
+                    <p>Optimize your BSC asset portfolio with AI-driven allocation strategies and risk management tools.</p>
                     <blockquote>
-                        "Система управления портфелем Crypto AI использует современную теорию портфеля, адаптированную специально для криптоактивов на BSC."
+                        "Crypto AI's portfolio management system uses modern portfolio theory adapted specifically for crypto assets on BSC."
                     </blockquote>
                     <ul>
-                        <li>Автоматическая ребалансировка портфеля на основе рыночных условий</li>
-                        <li>Оптимизация доходности с учетом риска</li>
-                        <li>Анализ диверсификации и рекомендации</li>
-                        <li>Отслеживание производительности с подробными метриками</li>
+                        <li>Automated portfolio rebalancing based on market conditions</li>
+                        <li>Risk-adjusted return optimization</li>
+                        <li>Diversification analysis and recommendations</li>
+                        <li>Performance tracking with detailed metrics</li>
                     </ul>
                 </div>
             </div>
@@ -392,15 +404,15 @@ contract CryptoTrading {
             <div class="content-wrapper">
                 <div class="text-content">
                     <h2>Multi-Chain Interoperability</h2>
-                    <p>Легко перемещайте активы и выполняйте сделки через несколько блокчейнов, используя BSC в качестве главной базы.</p>
+                    <p>Seamlessly bridge assets and execute trades across multiple blockchains while maintaining BSC as your home base.</p>
                     <blockquote>
-                        "Хотя BSC остается нашим основным направлением, Crypto AI обеспечивает бесшовную совместимость с 7 другими основными блокчейнами."
+                        "While BSC remains our primary focus, Crypto AI provides seamless interoperability with 7 other major blockchains."
                     </blockquote>
                     <ul>
-                        <li>Перемещение активов в один клик между BSC и другими сетями</li>
-                        <li>Обнаружение возможностей межсетевого арбитража</li>
-                        <li>Единая панель для управления активами в нескольких сетях</li>
-                        <li>Автоматическая оптимизация газа для межсетевых транзакций</li>
+                        <li>One-click asset bridging between BSC and other chains</li>
+                        <li>Cross-chain arbitrage opportunity detection</li>
+                        <li>Unified dashboard for multi-chain asset management</li>
+                        <li>Automated gas optimization for cross-chain transactions</li>
                     </ul>
                 </div>
                 <div class="image-content">
@@ -417,82 +429,19 @@ contract CryptoTrading {
         </div>
     </section>
 
-    <section id="risk" class="risk-management">
-        <div class="container">
-            <div class="content-wrapper reverse">
-                <div class="image-content">
-                    <div class="risk-dashboard">
-                        <h3>Risk Management Dashboard</h3>
-                        <div class="protected-badge">PROTECTED</div>
-                        <div class="risk-level">
-                            <h4>Portfolio Risk Level</h4>
-                            <div class="level moderate">MODERATE</div>
-                        </div>
-                        <div class="risk-metrics">
-                            <h4>Key Risk Metrics</h4>
-                            <div class="metrics-grid">
-                                <div class="metric-item">
-                                    <h5>Volatility</h5>
-                                    <div class="value medium">Medium</div>
-                                </div>
-                                <div class="metric-item">
-                                    <h5>Drawdown</h5>
-                                    <div class="value low">Low</div>
-                                </div>
-                                <div class="metric-item">
-                                    <h5>Correlation</h5>
-                                    <div class="value diversified">Diversified</div>
-                                </div>
-                                <div class="metric-item">
-                                    <h5>Liquidity</h5>
-                                    <div class="value high">High</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="automated-protection">
-                            <h4>Automated Protection</h4>
-                            <div class="stop-loss">
-                                <h5>Stop-Loss</h5>
-                                <div class="stop-loss-details">
-                                    <div class="detail">Entry: $240</div>
-                                    <div class="detail">Current: $280</div>
-                                    <div class="detail">Stop-Loss: $220</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-content">
-                    <h2>Advanced Risk Management</h2>
-                    <p>Защитите свои инвестиции с помощью сложных инструментов управления рисками, разработанных специально для высокоскоростной среды BSC.</p>
-                    <blockquote>
-                        "Набор инструментов управления рисками Crypto AI привносит инструменты институционального уровня трейдерам BSC."
-                    </blockquote>
-                    <ul>
-                        <li>Настраиваемые механизмы стоп-лосс и тейк-профит</li>
-                        <li>Рекомендации по размеру позиции на основе толерантности к риску</li>
-                        <li>Корректировка экспозиции на основе волатильности</li>
-                        <li>Анализ сценариев и стресс-тестирование для портфелей</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer>
         <div class="container">
             <div class="footer-top">
                 <div class="logo">
                     <img src="assets/images/logo.svg" alt="Logo">
-                    <p>Crypto AI революционизирует трейдинг на Binance Smart Chain с продвинутыми алгоритмами ИИ и молниеносным исполнением.</p>
+                    <p>Crypto AI revolutionizes trading on Binance Smart Chain with advanced AI algorithms and lightning-fast execution.</p>
                 </div>
                 <div class="footer-buttons">
-                    <a href="#" class="btn-primary">Запустить приложение</a>
-                    <a href="#" class="btn-secondary">Сообщество</a>
+                    <a href="https://twitter.com" class="btn-secondary"><img src="free-icon-twitter-59690202.png" alt="Twitter" class="twitter-icon"> Twitter</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Crypto AI. Все права защищены.</p>
+                <p>&copy; 2025 Crypto AI. All rights reserved.</p>
             </div>
         </div>
     </footer>
