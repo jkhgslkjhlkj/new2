@@ -335,9 +335,11 @@ contract CryptoTrading {
             <div class="content-wrapper reverse">
                 <div class="image-content">
                     <div class="portfolio-chart">
-                        <h3>Portfolio Overview</h3>
-                        <div class="ai-badge">OPTIMIZED BY AI</div>
-                        <div class="risk-badge">BALANCED</div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                            <div class="risk-badge" style="margin-right: 10px;">BALANCED</div>
+                            <div class="ai-badge">OPTIMIZED BY AI</div>
+                        </div>
+                        <h3 style="margin-top: 5px; margin-bottom: 15px;">Portfolio Overview</h3>
                         <div class="donut-chart">
                             <canvas id="portfolioChart"></canvas>
                         </div>

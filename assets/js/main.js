@@ -246,7 +246,7 @@ function initCharts() {
         const portfolioChart = new Chart(portfolioChartElement, {
             type: 'doughnut',
             data: {
-                labels: ['BNB', 'BUSD', 'CAKE', 'ETH', 'Others'],
+                labels: ['SOL', 'USDC', 'RAY', 'ETH', 'Others'],
                 datasets: [{
                     data: [35, 25, 20, 15, 5],
                     backgroundColor: [
